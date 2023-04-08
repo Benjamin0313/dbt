@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 RUN pip3 install dbt-snowflake
 
 # Set up a working directory
-WORKDIR /Users/daisuke.harato/Documents/zibunnnopoc/dbt
+WORKDIR /Users/daisuke.harato/Documents/mypoc/dbt
 
 # Copy the project into the container
 COPY . .
