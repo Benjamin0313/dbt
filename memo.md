@@ -6,3 +6,9 @@
 
 - profiles.ymlの一次対応
 export DBT_PROFILES_DIR=/Users/daisuke.harato/Documents/mypoc/dbt/dbt_poc/.dbt
+
+- pipx
+  - https://pypa.github.io/pipx/installation/
+- pipx run --pip-args="dbt-snowflake" dbt-osmosis yaml refactor
+
+- pip install dbt-osmosis dbt-snowflake

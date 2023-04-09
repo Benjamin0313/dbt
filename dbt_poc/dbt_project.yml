@@ -36,3 +36,16 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+      +dbt-osmosis: "schema/{model}.yml"
+
+    # example:
+    #   # nest docs in subfolder relative to model
+    #   +dbt-osmosis: "schema/{model}.yml"
+
+    # intermediate:
+    #   # separate docs based on materialization
+    #   +dbt-osmosis: "{node.config[materialized]}/{model}.yml"
+
+    # marts:
+    #   # static paths are perfectly fine!
+    #   +dbt-osmosis: "prod.yml"
