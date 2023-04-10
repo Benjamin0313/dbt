@@ -46,8 +46,8 @@ jobs:
             cat ~/.dbt/profiles.yml
         
         - name: Run dbt
-          working_directory: dbt_poc
-          run |
+          working-directory: dbt_poc
+          run: |
             dbt debug
             dbt deps
             dbt run
