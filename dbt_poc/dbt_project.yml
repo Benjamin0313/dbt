@@ -34,7 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_poc:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    example_1:
+      +materialized: view
+      +dbt-osmosis: "schema/{model}.yml"
+
+    example_2:
       +materialized: view
       +dbt-osmosis: "schema/{model}.yml"
 
