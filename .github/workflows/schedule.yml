@@ -1,0 +1,53 @@
+name: batch_snowflake
+
+on:
+    workflow_dispatch:
+
+    # schedule:
+    #   - cron: "0 7 * * *"
+
+jobs:
+    batch_snowflake:
+        name: batch_snowflake
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Check out
+          uses: actions/checkout@master
+
+        - uses: actions/setup-python@v1
+          with:
+            python-version: "3.8.x"
+
+        - name: Install Dependencies
+          run: |
+            pip install dbt-snowflake
+            python3 -m pip install--upgrade pip
+        
+        - name: Set Profiles
+          run: |
+            mkdir ~/.dbt
+            cat << EOF > ~/.dbt/profiles.yml
+            dbt_poc:
+              outputs:
+                dev:
+                  account: on44798-ded_sandbox
+                  database: d_harato_db
+                  password: daikon0313
+                  role: sysadmin
+                  schema: dbt
+                  threads: 4
+                  type: snowflake
+                  user: d.harato@datumstudio.jp
+                  warehouse: d_harato_wh
+                  authenticator: username_password_mfa
+              target: dev
+            EOF
+            cat ~/.dbt/profiles.yml
+        
+        - name: Run dbt
+          working_directory: dbt_poc
+          run |
+            dbt debug
+            dbt deps
+            dbt run
