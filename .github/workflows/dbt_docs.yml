@@ -84,13 +84,16 @@ jobs:
             pwd
             ls
 
-        - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1
-          working-directory: dbt_poc
-          with:
+        # - name: Upload artifact
+        #   uses: actions/upload-pages-artifact@v1
+        #   working-directory: dbt_poc
+        #   with:
             # Upload entire repository
-            path: target/
+            # path: target/
   
         - name: Deploy to GitHub Pages
+          working-directory: dbt_poc
           id: deployment
           uses: actions/deploy-pages@v1
+          with:
+            public_dir: target/
