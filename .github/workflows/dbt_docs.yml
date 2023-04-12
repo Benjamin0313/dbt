@@ -21,17 +21,59 @@ permissions:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # Single deploy job since we're just deploying
+    docs_generate:
+        name: docs_generate
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Check out
+          uses: actions/checkout@master
+
+        - uses: actions/setup-python@v1
+          with:
+            python-version: "3.8.x"
+
+        - name: Install Dependencies
+          run: |
+            pip install dbt-snowflake
+            python3 -m pip install --upgrade pip
+        
+        - name: Set Profiles
+          run: |
+            mkdir ~/.dbt
+            cat << EOF > ~/.dbt/profiles.yml
+            dbt_poc:
+              target: dev
+              outputs:
+                dev:
+                  type:      snowflake
+                  account:   ${{ secrets.SF_ACCOUNT }}
+                  user:      ${{ secrets.SF_USER }}
+                  password:  ${{ secrets.SF_PASSWORD }}
+                  role:      sysadmin
+                  warehouse: d_harato_wh
+                  database:  d_harato_db
+                  schema:    dbt
+                  threads:   4
+                  authenticator: username_password_mfa
+            EOF
+            cat ~/.dbt/profiles.yml
+
+        - name: Run dbt
+          working-directory: dbt_poc
+          run: |
+            dbt debug
+            dbt docs generate
+
   deploy:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      needs: docs_generate
+      name:  github-pages
+      url:   ${{ steps.deployment.outputs.page_url }}
  
     runs-on: ubuntu-latest
  
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
- 
       - name: Setup Pages
         uses: actions/configure-pages@v1
  
@@ -44,7 +86,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: sample_dir
+          path: dbt_poc/target
  
       - name: Deploy to GitHub Pages
         id: deployment
