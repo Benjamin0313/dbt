@@ -33,9 +33,9 @@ jobs:
               outputs:
                 dev:
                   type:      snowflake
-                  account:   ${{ secrets.ACCOUNT }}
-                  user:      ${{ secrets.USER }}
-                  password:  ${{ secrets.PASSWORD }}
+                  account:   ${{ secrets.SF_ACCOUNT }}
+                  user:      ${{ secrets.SF_USER }}
+                  password:  ${{ secrets.SF_PASSWORD }}
                   role:      sysadmin
                   warehouse: d_harato_wh
                   database:  d_harato_db
