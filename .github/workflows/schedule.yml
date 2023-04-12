@@ -29,6 +29,7 @@ jobs:
             mkdir ~/.dbt
             cat << EOF > ~/.dbt/profiles.yml
             dbt_poc:
+              target: dev
               outputs:
                 dev:
                   type:      snowflake
@@ -41,7 +42,6 @@ jobs:
                   schema:    dbt
                   threads:   4
                   authenticator: username_password_mfa
-              target: dev
             EOF
             cat ~/.dbt/profiles.yml
         
