@@ -44,7 +44,9 @@ jobs:
                   authenticator: username_password_mfa
             EOF
             cat ~/.dbt/profiles.yml
-        
+            
+            cat /home/runner/.dbt/profiles.yml
+
         - name: Run dbt
           working-directory: dbt_poc
           run: |
