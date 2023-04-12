@@ -63,29 +63,29 @@ jobs:
             dbt debug
             dbt docs generate
 
-  deploy:
-    environment:
-      needs: docs_generate
-      name:  github-pages
-      url:   ${{ steps.deployment.outputs.page_url }}
- 
-    runs-on: ubuntu-latest
- 
-    steps:
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
- 
-      - name: current dir
-        run: |
-          pwd
-          ls
+    deploy:
+      environment:
+        needs: docs_generate
+        name:  github-pages
+        url:   ${{ steps.deployment.outputs.page_url }}
+  
+      runs-on: ubuntu-latest
+  
+      steps:
+        - name: Setup Pages
+          uses: actions/configure-pages@v1
+  
+        - name: current dir
+          run: |
+            pwd
+            ls
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: dbt_poc/target
- 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v1
+          with:
+            # Upload entire repository
+            path: dbt_poc/target
+  
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v1
