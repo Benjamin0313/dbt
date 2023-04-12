@@ -79,15 +79,17 @@ jobs:
           uses: actions/configure-pages@v1
   
         - name: current dir
+          working-directory: dbt_poc
           run: |
             pwd
             ls
 
         - name: Upload artifact
+          working-directory: dbt_poc
           uses: actions/upload-pages-artifact@v1
           with:
             # Upload entire repository
-            path: dbt_poc/target
+            path: target/
   
         - name: Deploy to GitHub Pages
           id: deployment
