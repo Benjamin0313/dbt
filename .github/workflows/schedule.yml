@@ -33,9 +33,9 @@ jobs:
               outputs:
                 dev:
                   type:      snowflake
-                  account:   ${{ secrets.ACCOUNT }}
-                  user:      ${{ secrets.USER }}
-                  password:  ${{ secrets.PASSWORD }}
+                  account:   on44798-ded_sandbox # ${{ secrets.ACCOUNT }}
+                  user:      d.harato@datumstudio.jp # ${{ secrets.USER }}
+                  password:  daikon0313 # ${{ secrets.PASSWORD }}
                   role:      sysadmin
                   warehouse: d_harato_wh
                   database:  d_harato_db
@@ -44,8 +44,6 @@ jobs:
                   authenticator: username_password_mfa
             EOF
             cat ~/.dbt/profiles.yml
-            
-            cat /home/runner/.dbt/profiles.yml
 
         - name: Run dbt
           working-directory: dbt_poc
