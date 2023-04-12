@@ -63,20 +63,20 @@ jobs:
             dbt debug
             dbt docs generate
 
-    deploy:
-      needs: docs_generate
-      environment:
-        name:  github-pages
-        url:   ${{ steps.deployment.outputs.page_url }}
+    # deploy:
+    #   needs: docs_generate
+    #   environment:
+    #     name:  github-pages
+    #     url:   ${{ steps.deployment.outputs.page_url }}
   
-      runs-on: ubuntu-latest
+      # runs-on: ubuntu-latest
   
-      steps:
-        - name: Check out
-          uses: actions/setup-python@v1
+      # steps:
+      #   - name: Check out
+      #     uses: actions/setup-python@v1
  
-        - name: Setup Pages
-          uses: actions/configure-pages@v1
+      #   - name: Setup Pages
+      #     uses: actions/configure-pages@v1
   
         - name: current dir
           working-directory: dbt_poc
@@ -85,7 +85,7 @@ jobs:
             ls
 
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v1
+          # uses: actions/upload-pages-artifact@v1
           working-directory: dbt_poc
           with:
             # Upload entire repository
