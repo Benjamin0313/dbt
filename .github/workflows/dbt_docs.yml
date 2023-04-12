@@ -94,4 +94,4 @@ jobs:
         - name: Deploy to GitHub Pages
           uses: peaceiris/actions-gh-pages@v3
           with:
-            public_dir: target/
+            publish_dir: target/
