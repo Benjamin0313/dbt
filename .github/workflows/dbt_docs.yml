@@ -57,7 +57,7 @@ jobs:
             EOF
             cat ~/.dbt/profiles.yml
 
-        - name: Run dbt
+        - name: Run dbt docs generate
           working-directory: dbt_poc
           run: |
             dbt debug
@@ -72,6 +72,9 @@ jobs:
       runs-on: ubuntu-latest
   
       steps:
+        - name: Check out
+          uses: actions/setup-python@v1
+ 
         - name: Setup Pages
           uses: actions/configure-pages@v1
   
