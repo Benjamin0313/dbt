@@ -31,15 +31,15 @@ jobs:
             dbt_poc:
               outputs:
                 dev:
-                  type: snowflake
-                  account: ${{ secrets.ACCOUNT }}
-                  user: ${{ secrets.USER }}
-                  password: ${{ secrets.PASSWORD }}
-                  role: sysadmin
+                  type:      snowflake
+                  account:   ${{ secrets.ACCOUNT }}
+                  user:      ${{ secrets.USER }}
+                  password:  ${{ secrets.PASSWORD }}
+                  role:      sysadmin
                   warehouse: d_harato_wh
-                  database: d_harato_db
-                  schema: dbt
-                  threads: 4
+                  database:  d_harato_db
+                  schema:    dbt
+                  threads:   4
                   authenticator: username_password_mfa
               target: dev
             EOF
