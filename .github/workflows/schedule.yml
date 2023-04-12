@@ -33,9 +33,9 @@ jobs:
               outputs:
                 dev:
                   type:      snowflake
-                  account:   on44798-ded_sandbox # ${{ secrets.ACCOUNT }}
-                  user:      d.harato@datumstudio.jp # ${{ secrets.USER }}
-                  password:  daikon0313 # ${{ secrets.PASSWORD }}
+                  account:   ${{ secrets.ACCOUNT }}
+                  user:      ${{ secrets.USER }}
+                  password:  ${{ secrets.PASSWORD }}
                   role:      sysadmin
                   warehouse: d_harato_wh
                   database:  d_harato_db
