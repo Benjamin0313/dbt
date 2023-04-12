@@ -64,8 +64,8 @@ jobs:
             dbt docs generate
 
     deploy:
+      needs: docs_generate
       environment:
-        needs: docs_generate
         name:  github-pages
         url:   ${{ steps.deployment.outputs.page_url }}
   
