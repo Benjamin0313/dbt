@@ -31,15 +31,15 @@ jobs:
             dbt_poc:
               outputs:
                 dev:
-                  account: on44798-ded_sandbox
-                  database: d_harato_db
-                  password: daikon0313
+                  type: snowflake
+                  account: ${{ secrets.ACCOUNT }}
+                  user: ${{ secrets.USER }}
+                  password: ${{ secrets.PASSWORD }}
                   role: sysadmin
+                  warehouse: d_harato_wh
+                  database: d_harato_db
                   schema: dbt
                   threads: 4
-                  type: snowflake
-                  user: d.harato@datumstudio.jp
-                  warehouse: d_harato_wh
                   authenticator: username_password_mfa
               target: dev
             EOF
