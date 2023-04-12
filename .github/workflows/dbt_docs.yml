@@ -94,5 +94,5 @@ jobs:
         - name: Deploy to GitHub Pages
           uses: peaceiris/actions-gh-pages@v3
           env:
-            ACTIONS_DEPLOY_KEY: ${{ secrets.DBT_DOCS_TEST }}
+            DEPLOY_KEY: ${{ secrets.DBT_DOCS_TEST }}
             PUBLISH_DIR: ./target/
