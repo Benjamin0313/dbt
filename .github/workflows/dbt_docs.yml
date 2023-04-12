@@ -92,8 +92,6 @@ jobs:
             # path: target/
   
         - name: Deploy to GitHub Pages
-          working-directory: dbt_poc
-          id: deployment
           uses: peaceiris/actions-gh-pages@v3
           with:
             public_dir: target/
