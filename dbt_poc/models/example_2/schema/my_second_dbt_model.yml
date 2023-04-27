@@ -1,7 +1,0 @@
-version: 2
-models:
-  - name: my_second_dbt_model
-    columns:
-      - name: ID
-        description: ''
-sources: []
