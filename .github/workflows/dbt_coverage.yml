@@ -1,0 +1,56 @@
+name: dbt_coverage
+
+on:
+    workflow_dispatch:
+
+    #schedule:
+    #   - cron: "0 7 * * *"
+
+jobs:
+    batch_snowflake:
+        name: batch_snowflake
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Check out
+          uses: actions/checkout@master
+
+        - uses: actions/setup-python@v1
+          with:
+            python-version: "3.8.x"
+
+        - name: Install Dependencies
+          run: |
+            pip install dbt-snowflake
+            python3 -m pip install --upgrade pip
+        
+        - name: Set Profiles
+          run: |
+            mkdir ~/.dbt
+            cat << EOF > ~/.dbt/profiles.yml
+            dbt_poc:
+              target: dev
+              outputs:
+                dev:
+                  type:      snowflake
+                  account:   ${{ secrets.SF_ACCOUNT }}
+                  user:      ${{ secrets.SF_USER }}
+                  password:  ${{ secrets.SF_PASSWORD }}
+                  role:      sysadmin
+                  warehouse: d_harato_wh
+                  database:  d_harato_db
+                  schema:    dbt
+                  threads:   4
+                  authenticator: username_password_mfa
+            EOF
+            cat ~/.dbt/profiles.yml
+
+        - name: generate dbt docs
+          working-directory: dbt_poc
+          run: |
+            dbt generate docs
+
+        - name: get coverage
+          working-directory: dbt_poc
+          run: |
+            dbt-coverage compute doc   --cov-format markdown
