@@ -62,7 +62,7 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             script: |
               const fs = require('fs');
-              const markdown = fs.readFileSync('coverage.md', 'utf8');
+              // const markdown = fs.readFileSync('coverage.md', 'utf8');
               const { data: pullRequest } = await github.pulls.get({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
