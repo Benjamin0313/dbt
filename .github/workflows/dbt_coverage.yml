@@ -48,7 +48,7 @@ jobs:
         - name: generate dbt docs
           working-directory: dbt_poc
           run: |
-            dbt generate docs
+            dbt docs generate
 
         - name: get coverage
           working-directory: dbt_poc
