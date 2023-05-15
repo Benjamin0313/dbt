@@ -1,0 +1,6 @@
+target
+macros
+models
+snapshots
+dbt_packages
+tests

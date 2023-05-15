@@ -11,3 +11,8 @@ export DBT_PROFILES_DIR=/Users/daisuke.harato/Documents/mypoc/dbt/dbt_poc/.dbt
 
 - dbt-osmosisのことはじめ
 - [CLI の概要](https://z3z1ma.github.io/dbt-osmosis/docs/tutorial-basics/commands)
+
+# sqlfmt
+```
+pip install shandy-sqlfmt
+```
