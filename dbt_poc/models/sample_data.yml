@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: SAMPLE_DATA
+    database: D_HARATO_DB
+    schema: DBT
+    tables:
+      - name: SNAPSHOT_TEST
