@@ -1,1 +1,0 @@
-select * from {{ source('SAMPLE_DATA', 'sample_data_moto') }}

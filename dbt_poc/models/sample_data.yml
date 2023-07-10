@@ -5,4 +5,4 @@ sources:
     database: D_HARATO_DB
     schema: DBT
     tables:
-      - name: sample_data_moto
+      - name: SNAPSHOT_TEST
