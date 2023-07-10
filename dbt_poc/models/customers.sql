@@ -1,18 +1,18 @@
 with customers as (
 
-    select * from {{ dbt_unit_testing.ref('stg_customers') }}
+    select * from {{ ref('stg_customers') }}
 
 ),
 
 orders as (
 
-    select * from {{ dbt_unit_testing.ref('stg_orders') }}
+    select * from {{ ref('stg_orders') }}
 
 ),
 
 payments as (
 
-    select * from {{ dbt_unit_testing.ref('stg_payments') }}
+    select * from {{ ref('stg_payments') }}
 
 ),
 
