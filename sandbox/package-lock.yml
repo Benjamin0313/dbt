@@ -1,8 +1,4 @@
 packages:
-  - package: get-select/dbt_snowflake_monitoring
-    version: 4.6.0
-  - package: dbt-labs/dbt_utils
-    version: 1.1.1
-  - package: get-select/dbt_snowflake_query_tags
-    version: 2.5.0
-sha1_hash: 68567d397bada8a8279062d50ddc2a173e5a40f8
+- git: https://github.com/Benjamin0313/dbt_packages.git
+  revision: 0deb1771415bd4498ad39d8dc3dccf9c6f3a9fad
+sha1_hash: 2ae7240fa3436dcce354de15166294ee0473aaae
