@@ -1,0 +1,18 @@
+version: 2
+
+
+sources:
+  - name: test_get_meta_data
+    database: d_harato_db
+    schema: dbt
+    tables:
+      - name: test_get_meta
+        columns:
+          - name: email
+            meta:
+              tag:
+                - type: masking_policy
+                  name: test
+                  value: true
+                  quoting: false
+          - name: test_columns
